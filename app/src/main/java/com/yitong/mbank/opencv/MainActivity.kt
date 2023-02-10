@@ -1,21 +1,10 @@
 package com.yitong.mbank.opencv
 
-import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Debug
-import android.util.Log
 import com.yitong.mbank.opencv.databinding.ActivityMainBinding
 import com.yitong.mbank.opencv.utils.MatUtils
 import org.opencv.android.OpenCVLoader
-import org.opencv.android.Utils
-import org.opencv.core.Core
-import org.opencv.core.CvType
-import org.opencv.core.Mat
-import org.opencv.core.Scalar
-import org.opencv.imgcodecs.Imgcodecs
-import org.opencv.imgproc.Imgproc
-import java.io.File
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewbind: ActivityMainBinding
@@ -32,15 +21,9 @@ class MainActivity : AppCompatActivity() {
          * 即可
          */
         OpenCVLoader.initDebug()
-        MatUtils.saveImage(this,cacheDir.absoluteFile.path)
         viewbind.bt.setOnClickListener {
-            MatUtils.togray(this,R.mipmap.credit_card_guide_2,viewbind.iv)
             viewbind.iv2.setImageBitmap(MatUtils.matToBitmap(cacheDir.path + "/a_limb.jpg"))
         }
 
-    }
-
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
     }
 }
