@@ -1,19 +1,10 @@
 package com.yitong.mbank.opencv
 
-import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.yitong.mbank.opencv.databinding.ActivityMainBinding
 import com.yitong.mbank.opencv.utils.MatUtils
 import org.opencv.android.OpenCVLoader
-import org.opencv.android.Utils
-import org.opencv.core.CvType
-import org.opencv.core.Mat
-import org.opencv.core.Scalar
-import org.opencv.imgcodecs.Imgcodecs
-import org.opencv.imgproc.Imgproc
-import java.io.File
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewbind: ActivityMainBinding
