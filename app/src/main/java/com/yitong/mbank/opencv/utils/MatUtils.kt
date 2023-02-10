@@ -30,9 +30,15 @@ object MatUtils {
         // 创建目标mat图像
         val dst = Mat()
         // 将图像从一种颜色空间转换为另一种颜色
+        /*
+          Bitmap 的类型是ARGB 8888 的类型，而OpenCV中加载图像默认的类型为 BGR类型，所以需要通过 cvtColor 函数转换为RGBA 四通道图像之后再调用 mat 与 Bitmap 的相互转换方法。
+          否则的话就会出现通道顺序不正确，从而导致出现图像显示颜色异常的情况。
+         */
         Imgproc.cvtColor(src,dst,Imgproc.COLOR_BGR2RGBA)
         // 将mat转换成bitmap
         Utils.matToBitmap(dst,bm)
+        src.release()
+        dst.release()
         return bm
     }
 
@@ -66,9 +72,10 @@ object MatUtils {
         if (!fileDir.exists()){
             fileDir.mkdirs()
         }
-        val name = System.currentTimeMillis().toString() + "_limb.jpg"
+        val name = "a_limb.jpg"
         val tempFile = File(fileDir.absoluteFile.path + File.separator,name)
         Imgcodecs.imwrite(tempFile.absolutePath,mat)
+        mat.release()
     }
 
     /**
